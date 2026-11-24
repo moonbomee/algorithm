@@ -16,14 +16,14 @@ int solution(vector<int> diffs, vector<int> times, long long limit) {
     long long all_time=time;
     int answer=1;
     time=0;
-    for(int level=v[n-1].first;level>=0;--level){
+    for(int level=v[n-1].first;level>0;--level){
         while(i>-1&&v[i].first>level) {
             time+=v[i].second;
             i--;
         }
         all_time+=time;
-        if(all_time>limit){
-            answer=level+1;
+        if(all_time>=limit){
+            all_time>limit ? answer=level+1 : answer=level;
             break;
         }
     }
